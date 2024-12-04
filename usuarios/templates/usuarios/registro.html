@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descripción de RecetasFit</title>
+    {% load static %}
+    <style>
+        body {
+            background: url("{% static 'img/tienda5.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px; /* Ajusté el ancho máximo */
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Sombra intensa para hacer que "flote" */
+            transition: box-shadow 0.3s ease; /* Para un cambio suave al hacer hover */
+        }
+        .container:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); /* Sombra aún más grande cuando se pasa el cursor */
+        }
+        h2 {
+            color: #4e54c8;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #4e54c8;
+            font-weight: bold;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo de la aplicación -->
+        <img src="{% static 'img/logo_recetasfit.png' %}" alt="Logo de RecetasFit" class="logo">
+        <h2>Bienvenido a RecetasFit</h2>
+        <p>RecetasFit es tu compañero ideal para llevar una alimentación saludable. En esta app, podrás descubrir y crear una variedad de recetas, ya sean saludables o no tan saludables, pero siempre manteniendo el enfoque en opciones que contribuyan a tu bienestar.</p>
+        <p>La aplicación te permite:</p>
+        <ul style="text-align: left; margin-left: 40px;">
+            <li>Calcular las calorías de cada receta.</li>
+            <li>Buscar recetas basadas en los ingredientes que tienes en casa, o filtrar por categorías.</li>
+            <li>Guardar tus recetas favoritas y generar listas de compras automáticas.</li>
+            <li>Crear, editar y eliminar tus propias recetas cuando lo desees.</li>
+        </ul>
+        <p>Además, si eres un administrador, podrás gestionar todas las recetas subidas por otros usuarios a través del panel de administración.</p>
+        <p>¡RecetasFit te ayuda a mantener un estilo de vida saludable mientras disfrutas de la cocina y te diviertes creando nuevas recetas!</p>
+    </div>
+</body>
+</html>
