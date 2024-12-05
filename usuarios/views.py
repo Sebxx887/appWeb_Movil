@@ -29,7 +29,7 @@ def registro(request):
 
 def generar_qr(request):
     # Enlace de descarga de la app
-    link_descarga = "https://www.mediafire.com/file/k18x1cmistlbnck/app-debug-androidTest.apk/filee"
+    link_descarga = "https://www.mediafire.com/file/ot1s7hptqdoutpd/app-debug.apk/file"
 
     # Crear el código QR
     qr = qrcode.QRCode(
