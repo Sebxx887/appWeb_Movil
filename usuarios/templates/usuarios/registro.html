@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,60 +12,161 @@
             background-size: cover;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
             color: #333;
         }
+
+        /* Imagen 1: Superior Izquierda */
+        .image1 {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 220px;
+            height: auto;
+            margin-top: -10px;
+            margin-left: 100px;
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.6); /* Sombra azul */
+        }
+
+        /* Imagen 2: Inferior Izquierda con separación */
+        .image2 {
+            position: fixed;
+            top: 380px;
+            left: 20px;
+            width: 220px;
+            height: auto;
+            margin-top: 126px;
+            margin-left: 100px;
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.6); /* Sombra azul */
+        }
+
+        /* Imagen 3: Superior Derecha */
+        .image3 {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 220px;
+            height: auto;
+            margin-top: 200px;
+            margin-right: 100px;
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.6); /* Sombra azul */
+        }
+
         .container {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 15px;
             width: 90%;
-            max-width: 800px; /* Ajusté el ancho máximo */
+            max-width: 800px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Sombra intensa para hacer que "flote" */
-            transition: box-shadow 0.3s ease; /* Para un cambio suave al hacer hover */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s ease;
+            margin-top: 20px;
+            z-index: 2;
         }
+
         .container:hover {
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); /* Sombra aún más grande cuando se pasa el cursor */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
         }
+
         h2 {
             color: #4e54c8;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 16px;
             line-height: 1.6;
             color: #333;
             margin-bottom: 15px;
         }
+
+        ul {
+            text-align: left;
+            margin-left: 40px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
         .highlight {
             color: #4e54c8;
             font-weight: bold;
         }
+
         .logo {
             max-width: 150px;
             margin-bottom: 20px;
         }
+
+        .qr-container img {
+            width: 180px; /* Tamaño mediano para el QR */
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .qr-container {
+            margin-top: 20px;
+        }
     </style>
+    <script>
+        // Detectar si el usuario está en móvil
+        function esMovil() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /android|iPad|iPhone|iPod/i.test(userAgent);
+        }
+
+        // Cambiar contenido dinámicamente
+        window.onload = function () {
+            const contenedorQR = document.getElementById('qr-contenedor');
+            if (esMovil()) {
+                contenedorQR.innerHTML = `
+                <p>Descarga la app desde este enlace:</p>
+                <a href="https://www.mediafire.com/file/k18x1cmistlbnck/app-debug-androidTest.apk/file" class="highlight">Descargar App</a>
+            `;
+            } else {
+                contenedorQR.innerHTML = `
+                <p>Escanea este código QR para descargar la app:</p>
+                <img src="{% url 'usuarios:generar_qr' %}" alt="Código QR" class="qr-image">
+            `;
+            }
+        }
+    </script>
 </head>
+
 <body>
+    <!-- Imágenes fuera del cuadro principal -->
+    <img src="{% static 'img/foto1.jpg' %}" alt="Foto 1" class="image1">
+    <img src="{% static 'img/foto2.jpg' %}" alt="Foto 2" class="image2">
+    <img src="{% static 'img/foto3.jpg' %}" alt="Foto 3" class="image3">
+
+    <!-- Contenido principal -->
     <div class="container">
         <!-- Logo de la aplicación -->
         <img src="{% static 'img/logo_recetasfit.png' %}" alt="Logo de RecetasFit" class="logo">
         <h2>Bienvenido a RecetasFit</h2>
-        <p>RecetasFit es tu compañero ideal para llevar una alimentación saludable. En esta app, podrás descubrir y crear una variedad de recetas, ya sean saludables o no tan saludables, pero siempre manteniendo el enfoque en opciones que contribuyan a tu bienestar.</p>
+        <p>RecetasFit es tu compañero ideal para llevar una alimentación saludable. En esta app, podrás descubrir y
+            crear una variedad de recetas, ya sean saludables o no tan saludables, pero siempre manteniendo el enfoque
+            en opciones que contribuyan a tu bienestar.</p>
         <p>La aplicación te permite:</p>
-        <ul style="text-align: left; margin-left: 40px;">
+        <ul>
             <li>Calcular las calorías de cada receta.</li>
             <li>Buscar recetas basadas en los ingredientes que tienes en casa, o filtrar por categorías.</li>
             <li>Guardar tus recetas favoritas y generar listas de compras automáticas.</li>
             <li>Crear, editar y eliminar tus propias recetas cuando lo desees.</li>
         </ul>
-        <p>Además, si eres un administrador, podrás gestionar todas las recetas subidas por otros usuarios a través del panel de administración.</p>
-        <p>¡RecetasFit te ayuda a mantener un estilo de vida saludable mientras disfrutas de la cocina y te diviertes creando nuevas recetas!</p>
+        <p>Además, si eres un administrador, podrás gestionar todas las recetas subidas por otros usuarios a través del
+            panel de administración.</p>
+        <p>¡RecetasFit te ayuda a mantener un estilo de vida saludable mientras disfrutas de la cocina y te diviertes
+            creando nuevas recetas!</p>
+        <!-- Contenedor dinámico para QR o enlace -->
+        <div class="qr-container" id="qr-contenedor">
+            <!-- Aquí se insertará dinámicamente el enlace o el QR -->
+        </div>
     </div>
 </body>
 </html>
